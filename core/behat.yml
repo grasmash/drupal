@@ -1,0 +1,15 @@
+default:
+  paths:
+    features: tests/Drupal/features
+  extensions:
+    Behat\MinkExtension\Extension:
+      goutte: ~
+      default_session: goutte
+      # This value should be populated by the install process.
+      base_url: ''
+    Drupal\DrupalExtension\Extension:
+      blackbox: ~
+      api_driver: drupal
+      drupal:
+        # This value should be populated by the install process.
+        drupal_root: ''

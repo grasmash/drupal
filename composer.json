@@ -25,6 +25,11 @@
     "phpunit/phpunit": "3.7.*",
     "zendframework/zend-feed": "2.2.*"
   },
+  "require-dev": {
+    "drupal/drupal-extension": "dev-master",
+    "behat/mink-extension": "*",
+    "behat/mink-selenium2-driver": "*"
+  },
   "autoload": {
     "psr-4": {
       "Drupal\\Core\\": "core/lib/Drupal/Core",
