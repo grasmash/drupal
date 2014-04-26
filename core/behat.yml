@@ -6,13 +6,8 @@ default:
       goutte: ~
       default_session: goutte
       javascript_session: selenium2
-      # This value should be populated by the install process.
-      base_url: ''
       selenium2:
-        wd_host: http://127.0.0.1:4444/wd/hub
+        wd_host: 'http://127.0.0.1:4444/wd/hub'
     Drupal\DrupalExtension\Extension:
       blackbox: ~
       api_driver: drupal
-      drupal:
-        # This value should be populated by the install process.
-        drupal_root: ''

@@ -679,9 +679,6 @@ function install_tasks($install_state) {
     'install_bootstrap_full' => array(
       'run' => INSTALL_TASK_RUN_IF_REACHED,
     ),
-    'install_behat' => array(
-      'run' => INSTALL_TASK_RUN_IF_REACHED,
-    ),
     'install_profile_modules' => array(
       'display_name' => t('Install site'),
       'type' => 'batch',
@@ -1465,28 +1462,6 @@ function install_load_profile(&$install_state) {
 function install_bootstrap_full() {
   drupal_bootstrap(DRUPAL_BOOTSTRAP_FULL);
   \Drupal::service('session_manager')->initialize();
-}
-
-/*
- * Configures Behat yml file.
- */
-function install_behat() {
-  global $base_url;
-  $filename = DRUPAL_ROOT . '/core/behat.yml';
-
-  // Load default behat.yml configuration.
-  $parser = new Symfony\Component\Yaml\Parser();
-  $behat_conf = $parser->parse(file_get_contents($filename));
-
-  // Modify configuration.
-  $behat_conf['default']['extensions']['Behat\MinkExtension\Extension']['base_url'] = $base_url;
-  $behat_conf['default']['extensions']['Drupal\DrupalExtension\Extension']['drupal']['drupal_root'] = DRUPAL_ROOT;
-
-  // Write to file.
-  $dumper = new Symfony\Component\Yaml\Dumper();
-  $dumper->setIndentation(2);
-  $yaml = $dumper->dump($behat_conf, PHP_INT_MAX);
-  file_put_contents($filename, $yaml);
 }
 
 /**
